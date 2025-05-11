@@ -1,8 +1,10 @@
 // src/components/LoginForm.js
 import React, { useState } from "react";
 import axios from "axios";
+import { useRoute } from "@react-navigation/native";
 
 const LoginForm = () => {
+  const route = useRoute();
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [message, setMessage] = useState("");
 
@@ -18,6 +20,7 @@ const LoginForm = () => {
       );
       setMessage(`✅ ${res.data.message}, Token: ${res.data.token}`);
       localStorage.setItem("token", res.data.token);
+      route.push("/adminDash");
     } catch (err) {
       setMessage(`❌ ${err.response?.data?.message || "Error occurred"}`);
     }

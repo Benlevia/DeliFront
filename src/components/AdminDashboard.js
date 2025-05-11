@@ -14,6 +14,7 @@ const AdminDashboard = () => {
           "https://deli-back.vercel.app/users/getUsers"
         );
         setUsers(res.data);
+        route.push("/adminDash");
       } catch (err) {
         setError("לא הצלחנו להביא את המשתמשים");
       }

@@ -19,7 +19,7 @@ const RegisterForm = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://deli-back.vercel.appusers/register",
+        "https://deli-back.vercel.appusers/users/register",
         formData
       );
       setMessage(`✅ ${res.data.message}, Token: ${res.data.token}`);

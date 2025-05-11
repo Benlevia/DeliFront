@@ -13,7 +13,7 @@ const LoginForm = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://deli-back.vercel.app/users/login",
+        "https://deli-back.vercel.appusers/login",
         formData
       );
       setMessage(`✅ ${res.data.message}, Token: ${res.data.token}`);

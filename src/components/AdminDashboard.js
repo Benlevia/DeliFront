@@ -8,7 +8,7 @@ const AdminDashboard = () => {
   const token = localStorage.getItem("token");
 
   const URL =
-    process.env.ENVIORMENT === "product"
+    process.env.REACT_APP_ENVIORMENT === "product"
       ? "https://deli-back.vercel.app"
       : "http://localhost:5000";
 
@@ -40,7 +40,7 @@ const AdminDashboard = () => {
     if (!confirm) return;
 
     try {
-      await axios.delete(`https://deli-back.vercel.app/users/${userId}`, {
+      await axios.delete(`${REACT_APP_ENVIORMENT}/users/${userId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUsers(users.filter((u) => u._id !== userId));

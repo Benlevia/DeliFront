@@ -84,7 +84,6 @@ const RegisterForm = () => {
           <option value="deleveryguy">Delivery Guy</option>
         </select>
         <button type="submit">Register</button>
-        <span>{URL}</span>
       </form>
 
       {/* הודעת שגיאה או הצלחה */}

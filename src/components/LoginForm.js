@@ -9,7 +9,7 @@ const LoginForm = () => {
   const [message, setMessage] = useState("");
 
   const URL =
-    process.env.ENVIORMENT === "product"
+    process.env.REACT_APP_ENVIORMENT === "product"
       ? "https://deli-back.vercel.app"
       : "http://localhost:5000";
 

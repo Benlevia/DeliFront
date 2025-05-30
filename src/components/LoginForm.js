@@ -2,15 +2,16 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-const URL =
-  process.env.ENVIORMENT === "product"
-    ? "https://deli-back.vercel.app"
-    : "http://localhost:5000";
 
 const LoginForm = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [message, setMessage] = useState("");
+
+  const URL =
+    process.env.ENVIORMENT === "product"
+      ? "https://deli-back.vercel.app"
+      : "http://localhost:5000";
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });

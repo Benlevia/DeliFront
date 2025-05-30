@@ -6,7 +6,7 @@ const AdminDashboard = () => {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState("");
   const token = localStorage.getItem("token");
-  //
+
   const URL =
     process.env.REACT_APP_ENVIORMENT === "product"
       ? "https://deli-back.vercel.app"
@@ -40,7 +40,7 @@ const AdminDashboard = () => {
     if (!confirm) return;
 
     try {
-      await axios.delete(`${REACT_APP_ENVIORMENT}/users/${userId}`, {
+      await axios.delete(`${URL}/users/${userId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUsers(users.filter((u) => u._id !== userId));

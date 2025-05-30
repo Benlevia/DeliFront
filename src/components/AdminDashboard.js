@@ -8,7 +8,7 @@ const AdminDashboard = () => {
   const token = localStorage.getItem("token");
 
   const URL =
-    process.env.REACT_APP_ENVIORMENT === "product"
+    process.env.REACT_APP_ENVIRONMENT === "product"
       ? "https://deli-back.vercel.app"
       : "http://localhost:5000";
 

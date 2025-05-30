@@ -2,6 +2,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+const URL =
+  process.env.ENVIORMENT === "product"
+    ? "https://deli-back.vercel.app"
+    : "http://localhost:5000";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -14,10 +18,7 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        "https://deli-back.vercel.app/users/login",
-        formData
-      );
+      const res = await axios.post(`${URL}/users/login`, formData);
       setMessage(`✅ ${res.data.message}, Token: ${res.data.token}`);
       localStorage.setItem("token", res.data.token);
       navigate("/admindash");

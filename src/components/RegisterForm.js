@@ -34,10 +34,11 @@ const RegisterForm = () => {
 
     try {
       setError(""); // ננקה שגיאה קודמת
-      const res = await axios.post(
-        "http://localhost:5000/users/register",
-        formData
-      );
+      const URL =
+        process.env.enviorment === "product"
+          ? "https://deli-back.vercel.app"
+          : "http://localhost:5000";
+      const res = await axios.post(`${URL}/users/register`, formData);
       setMessage(`✅ ${res.data.message}, Token: ${res.data.token}`);
     } catch (err) {
       setMessage(`❌ ${err.response?.data?.message || "Error occurred"}`);

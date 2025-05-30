@@ -15,9 +15,9 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get(
-          "https://deli-back.vercel.app/users/getUsers"
-        );
+        const res = await axios.get(`${URL}/users/getUsers`, {
+          withCredentials: true,
+        });
         setUsers(res.data);
       } catch (err) {
         setError("לא הצלחנו להביא את המשתמשים");

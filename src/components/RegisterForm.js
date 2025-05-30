@@ -38,7 +38,10 @@ const RegisterForm = () => {
 
     try {
       setError(""); // ננקה שגיאה קודמת
-      const res = await axios.post(`${URL}/users/register`, formData);
+      const res = await axios.post(`${URL}/users/register`, formData, {
+        withCredentials: true,
+      });
+
       setMessage(`✅ ${res.data.message}, Token: ${res.data.token}`);
     } catch (err) {
       setMessage(`❌ ${err.response?.data?.message || "Error occurred"}`);
@@ -81,6 +84,7 @@ const RegisterForm = () => {
           <option value="deleveryguy">Delivery Guy</option>
         </select>
         <button type="submit">Register</button>
+        <span>{formData.userType}</span>
       </form>
 
       {/* הודעת שגיאה או הצלחה */}

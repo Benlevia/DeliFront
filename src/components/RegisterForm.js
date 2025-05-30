@@ -14,6 +14,10 @@ const RegisterForm = () => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
+  const URL =
+    process.env.ENVIORMENT === "product"
+      ? "https://deli-back.vercel.app"
+      : "http://localhost:5000";
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -34,10 +38,6 @@ const RegisterForm = () => {
 
     try {
       setError(""); // ננקה שגיאה קודמת
-      const URL =
-        process.env.enviorment === "product"
-          ? "https://deli-back.vercel.app"
-          : "http://localhost:5000";
       const res = await axios.post(`${URL}/users/register`, formData);
       setMessage(`✅ ${res.data.message}, Token: ${res.data.token}`);
     } catch (err) {

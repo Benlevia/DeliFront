@@ -7,6 +7,11 @@ const AdminDashboard = () => {
   const [error, setError] = useState("");
   const token = localStorage.getItem("token");
 
+  const URL =
+    process.env.ENVIORMENT === "product"
+      ? "https://deli-back.vercel.app"
+      : "http://localhost:5000";
+
   useEffect(() => {
     const fetchUsers = async () => {
       try {

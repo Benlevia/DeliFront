@@ -1,10 +1,10 @@
 // src/components/LoginForm.js
 import React, { useState } from "react";
 import axios from "axios";
-import { useRoute } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
-  const route = useRoute();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [message, setMessage] = useState("");
 
@@ -20,7 +20,7 @@ const LoginForm = () => {
       );
       setMessage(`✅ ${res.data.message}, Token: ${res.data.token}`);
       localStorage.setItem("token", res.data.token);
-      route.push("/adminDash");
+      navigate("/admindash");
     } catch (err) {
       setMessage(`❌ ${err.response?.data?.message || "Error occurred"}`);
     }

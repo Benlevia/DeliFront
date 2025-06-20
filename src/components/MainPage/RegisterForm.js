@@ -1,7 +1,8 @@
 // src/components/RegisterForm.js
 import React, { useState } from "react";
 import axios from "axios";
-
+import "./Auth.css";
+import { useNavigate } from "react-router-dom";
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
     username: "",
@@ -13,7 +14,7 @@ const RegisterForm = () => {
 
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-
+  const navigate = useNavigate();
   const URL =
     process.env.REACT_APP_ENVIRONMENT === "product"
       ? "https://deli-back.vercel.app"
@@ -43,14 +44,15 @@ const RegisterForm = () => {
       });
 
       setMessage(`✅ ${res.data.message}, Token: ${res.data.token}`);
+      navigate("/signin"); // ✅ נוודא שהניווט מתבצע רק לאחר הצלחה
     } catch (err) {
       setMessage(`❌ ${err.response?.data?.message || "Error occurred"}`);
     }
   };
 
   return (
-    <div>
-      <h2>Register</h2>
+    <div className="auth-container">
+      <span className="subtitle">Register</span>
       <form onSubmit={handleSubmit}>
         <input
           name="username"
@@ -83,12 +85,14 @@ const RegisterForm = () => {
           <option value="admin">Admin</option>
           <option value="deleveryguy">Delivery Guy</option>
         </select>
-        <button type="submit">Register</button>
+        <button className="command-button" type="submit">
+          Register
+        </button>
       </form>
 
       {/* הודעת שגיאה או הצלחה */}
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {message && <p>{message}</p>}
+      <span className="auth-error">{error}</span>
+      {message && <p className="auth-error">{message}</p>}
     </div>
   );
 };

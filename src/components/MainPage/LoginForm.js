@@ -31,17 +31,19 @@ const LoginForm = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div className="auth-container">
+      <span className="subtitle"></span>
       <form onSubmit={handleSubmit}>
         <input name="username" placeholder="Username" onChange={handleChange} />
         <input
           name="password"
           type="password"
-          placeholder="Password"
+          placeholder="Password "
           onChange={handleChange}
         />
-        <button type="submit">Login</button>
+        <button className="command-button" type="submit">
+          Login
+        </button>
       </form>
       {message && <p>{message}</p>}
     </div>

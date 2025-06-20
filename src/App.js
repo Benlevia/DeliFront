@@ -1,20 +1,25 @@
 // src/App.js
 import React from "react";
-import RegisterForm from "./components/RegisterForm";
-import LoginForm from "./components/LoginForm";
+import RegisterForm from "./components/MainPage/RegisterForm";
+import LoginForm from "./components/MainPage/LoginForm";
+import MainPage from "./components/MainPage/MainPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AdminDashboard from "./components/AdminDashboard";
-
+import "./App.css";
 function App() {
   return (
     <BrowserRouter>
-      <div style={{ padding: "20px" }}>
-        <h1>DeliZariz User System</h1>
-        <RegisterForm />
+      <div className="app-container">
+        <div className="title">
+          Deli<span className="Ztitle">Z</span>ari
+          <span className="Ztitle">Z</span>
+        </div>
         <hr />
-        <LoginForm />
       </div>
       <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/signup" element={<RegisterForm />} />
+        <Route path="/signin" element={<LoginForm />} />
         <Route path="/admindash" element={<AdminDashboard />} />
       </Routes>
     </BrowserRouter>
